@@ -131,8 +131,8 @@ span.highlight {
 }
 /* ClustrMaps globe size control */
 .clustr-wrap {
-  width: 300px;   /* 원하는 표시 크기 */
-  height: 300px;  /* 원하는 표시 크기 */
+  width: 380px;   /* 원하는 표시 크기 */
+  height: 380px;  /* 원하는 표시 크기 */
   position: relative;
   overflow: hidden;  /* 잘려 나가도 깔끔하게 */
   margin: 0 auto;
