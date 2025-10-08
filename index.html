@@ -166,6 +166,23 @@
     </tr>
   </table>
   <script defer id="clstr_globe" src="https://clustrmaps.com/globe.js?d=uKSkGfBsW2HkTKS1nP5NgKl9ErynLjwL_ivV9KVSolo"></script>
+  <script>
+    // Scale down the floating ClustrMaps globe widget
+    window.addEventListener('load', () => {
+      const globe = document.querySelector('div[id^="clustr"], div[class*="clustr"]');
+      if (globe) {
+        const applyScale = () => {
+          const scale = window.innerWidth <= 600 ? 0.6 : 0.75; // mobile smaller
+          globe.style.transform = `scale(${scale})`;
+          globe.style.transformOrigin = 'bottom right';
+          globe.style.right = '12px';
+          globe.style.bottom = '12px';
+        };
+        applyScale();
+        window.addEventListener('resize', applyScale);
+      }
+    });
+  </script>
 </body>
 
 </html>
