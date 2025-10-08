@@ -131,8 +131,8 @@ span.highlight {
 }
 /* ClustrMaps globe size control */
 .clustr-wrap {
-  width: 100px;   /* 원하는 표시 크기 */
-  height: 100px;  /* 원하는 표시 크기 */
+  width: 120px;   /* 원하는 표시 크기 */
+  height: 120px;  /* 원하는 표시 크기 */
   position: relative;
   overflow: hidden;  /* 잘려 나가도 깔끔하게 */
   margin: 0 auto;
@@ -146,6 +146,6 @@ span.highlight {
 
 /* 모바일에서 더 작게 */
 @media (max-width: 640px) {
-  .clustr-wrap { width: 160px; height: 160px; }
+  .clustr-wrap { width: 120px; height: 120px; }
   .clustr-wrap * { transform: scale(0.5); }
 }
