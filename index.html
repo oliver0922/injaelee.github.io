@@ -165,57 +165,7 @@
       </td>
     </tr>
   </table>
-  <script defer id="clstr_globe" src="https://clustrmaps.com/globe.js?d=uKSkGfBsW2HkTKS1nP5NgKl9ErynLjwL_ivV9KVSolo"></script>
-  <!-- 2) 사이즈 강제 축소 + 반복 보정 -->
-<script>
-  (function () {
-    // 원하는 최종 크기/배율만 조정하세요.
-    const DESK_SIZE = 96;     // 데스크톱 목표 px
-    const MOB_SIZE  = 80;     // 모바일 목표 px
-    const SCALE     = 0.70;   // 추가 축소(iframe/Shadow DOM 대비)
-  
-    function nodes() {
-      // globe 컨테이너로 추정되는 요소들을 광범위하게 잡음
-      return [
-        ...document.querySelectorAll('iframe[src*="clustrmaps"]'),
-        ...document.querySelectorAll('div[id*="clustr"], div[class*="clustr"]')
-      ];
-    }
-  
-    function tweak() {
-      const size = (window.innerWidth <= 600) ? MOB_SIZE : DESK_SIZE;
-      nodes().forEach(el => {
-        // 컨테이너 자체를 고정 위치로 가정하고 강제 축소
-        el.style.setProperty('width',  size + 'px', 'important');
-        el.style.setProperty('height', size + 'px', 'important');
-        el.style.setProperty('right',  '8px', 'important');
-        el.style.setProperty('bottom', '8px', 'important');
-        el.style.setProperty('z-index', '2147483647', 'important');
-  
-        // 내부가 shadow/iframe이면 직접 높이를 못 바꾸므로, scale로 한 번 더 축소
-        el.style.setProperty('transform', `scale(${SCALE})`, 'important');
-        el.style.setProperty('transform-origin', 'bottom right', 'important');
-  
-        // 내부 canvas/iframe이 있으면 컨테이너 채우도록
-        const inner = el.tagName === 'IFRAME' ? null : el.querySelector('canvas, iframe');
-        if (inner) {
-          inner.style.setProperty('width',  '100%', 'important');
-          inner.style.setProperty('height', '100%', 'important');
-        }
-      });
-    }
-  
-    function armObservers() {
-      const mo = new MutationObserver(tweak);
-      mo.observe(document.body, { childList: true, subtree: true, attributes: true });
-      window.addEventListener('resize', tweak);
-      // 일부 위젯이 주기적으로 스타일을 덮어써서, 주기 보정도 추가
-      setInterval(tweak, 1500);
-    }
-  
-    window.addEventListener('load', () => { tweak(); armObservers(); });
-  })();
-  </script>
+  <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=uKSkGfBsW2HkTKS1nP5NgKl9ErynLjwL_ivV9KVSolo&cl=ffffff&w=a"></script>
 </body>
 
 </html>
